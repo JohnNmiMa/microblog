@@ -4,11 +4,15 @@ from app import app, db, lm, oid
 from forms import LoginForm
 from models import User, ROLE_USER, ROLE_ADMIN
 
+@app.before_request
+def before_request():
+    g.user = current_user
 
 @app.route('/')
 @app.route('/index')
+@login_required
 def index():
-    user = { 'nickname': 'Bud' } # fake user
+    user = g.user
     posts = [ # fake array of posts
         { 
             'author': { 'nickname': 'John' }, 
@@ -61,3 +65,7 @@ def after_login(resp):
 def load_user(id):
     return User.query.get(int(id))
 
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
