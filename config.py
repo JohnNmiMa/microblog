@@ -16,3 +16,19 @@ OPENID_PROVIDERS = [
     { 'name': 'AOL', 'url': 'http://openid.aol.com/<username>' },
     { 'name': 'Flickr', 'url': 'http://www.flickr.com/<username>' }]
 
+# mail server settings
+MAIL_SERVER = 'smtp.googlemail.com'
+MAIL_PORT = 465
+MAIL_USE_TLS = False
+MAIL_USE_SSL = True
+MAIL_USERNAME = 'johnmarksjr@gmail.com'
+MAIL_PASSWORD = 'Please0p!'
+
+# administrator list
+ADMINS = ['johnmarksjr@gmail.com']
+
+# pagination
+POSTS_PER_PAGE = 3
+
+WHOOSH_BASE = os.path.join(basedir, 'search.db')
+MAX_SEARCH_RESULTS = 50
